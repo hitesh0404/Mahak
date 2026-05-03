@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-yk)2zv_jxppntuc7p+m-8!59b-csu$392j7r1h#)fbp8+jk@_(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1"
+    ]
 
 
 # Application definition
@@ -39,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authantication.apps.AuthanticationConfig',
     'inventory.apps.InventoryConfig',
-
+    'main.apps.MainConfig',
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mahak',
         'USER': 'root',
-        'PASSWORD': 'Admin@123',
+        'PASSWORD': 'Admin@123',    #root
         'HOST': 'localhost', 
         'PORT': '3306',       
     }
