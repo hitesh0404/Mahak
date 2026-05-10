@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'inventory.apps.InventoryConfig',
     'main.apps.MainConfig',
     'cart.apps.CartConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

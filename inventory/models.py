@@ -2,10 +2,16 @@ from django.db import models
 from autoslug import AutoSlugField
 # Create your models here.
 
+class BrandManager(models.Manager):
+    def search(self,name):
+        return self.filter(slug__icontains = name)
+
+
 class Brand(models.Model):
     name = models.CharField(max_length=40,primary_key=True)
     tagline = models.TextField()
     slug = AutoSlugField(populate_from='name')
+    objects = BrandManager()
     class Meta:
         db_table = "brand"
     def __str__(self):
