@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'cart.apps.CartConfig',
     'django_extensions',
+    "widget_tweaks"
 ]
 
 MIDDLEWARE = [

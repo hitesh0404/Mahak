@@ -1,16 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brands List</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+Products
+{% endblock %}
+
+{% block content %}
     {% for brand in brands %}
-        <h1> {{ brand.name }}</h1>
-        <p>  {{ brand.tagline }} </p>
-        <br>
-        <br>
+
+        <div class="col-md-3 mb-4">
+
+            <div class="card h-100">
+    
+                <h1> {{ brand.name }}</h1>
+                <p>  {{ brand.tagline }} </p>
+                <a href="{% url 'brand_detail' brand.slug %}"
+                       class="btn btn-primary"> 
+
+                        View Brand
+                </a>
+
+            </div>
+        </div>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

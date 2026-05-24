@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahak</title>
-</head>
-<body>
-<h1>Mahak Home Page</h1>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-    <a href="/cart">Cart Page</a>
-    <a href="/inventory/brands/">Brands </a>
+{% extends 'base.html' %}
 
-{% if request.user.is_authenticated %}
-    Hello {{ request.user.username }}
-    <a href="/logout">logout </a>
-{% else %}
-    <a href="/auth/login">login </a>
-{% endif %}
-   
-</body>
-</html>
+{% block title %}
+Mahak Home Page
+{% endblock %}
+
+{% block content %}
+        <h1>Mahak Home Page</h1>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/cart">Cart Page</a>
+            <a href="/inventory/brands/">Brands </a>
+
+        {% if request.user.is_authenticated %}
+            Hello {{ request.user.username }}
+            <a href="/logout">logout </a>
+        {% else %}
+            <a href="/auth/login">login </a>
+            <a href="/auth/register">Register </a>
+        {% endif %}
+{% endblock %}

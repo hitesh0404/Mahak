@@ -15,6 +15,7 @@ def register(request):
     elif request.method=="POST":
 
         form = RegisterForm(data=request.POST)
+        context = {'form':form}
         if form.is_valid():
             user = form.save(commit=False)
             if request.POST.get("password") ==  request.POST.get("confirm_password"):
@@ -22,13 +23,10 @@ def register(request):
                 user.save()
                 return redirect("login")
             else:
-                return render(request,'register.html',{'form':form})
+                return render(request,'register.html',context)
         else:
-            context = {'form':form}
             return render(request,"register.html",context)
-    
     else:
-
         return HttpResponseBadRequest("Bad Request")
 
 def my_login(request):
