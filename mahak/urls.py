@@ -22,6 +22,7 @@ urlpatterns = [
     path("",include("main.urls")),
     path("cart/",include("cart.urls")),
     path("inventory/",include("inventory.urls")),
+    path("auth/",include("authentication.urls")),
 ]
 
 
