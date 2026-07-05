@@ -47,9 +47,14 @@ INSTALLED_APPS = [
     'django_extensions',
     "widget_tweaks",
     "order.apps.OrderConfig",
+    "corsheaders",
+    "rest_framework",
+    "api",
 ]
 
+
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -145,3 +150,18 @@ MEDIA_URL = "image/"
 MEDIA_ROOT = BASE_DIR/""
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:5500",
+    "http://127.0.0.1:5500",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000", 
+    "http://localhost:80",   
+    "http://localhost:5500", 
+
+     
+]
