@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Products
+{% endblock %}
+
+{% block content %}
+    {% for brand in brands %}
+
+        <div class="col-md-3 mb-4">
+
+            <div class="card h-100">
+    
+                <h1> {{ brand.name }}</h1>
+                <p>  {{ brand.tagline }} </p>
+                <a href="{% url 'brand_detail' brand.slug %}"
+                       class="btn btn-primary"> 
+
+                        View Brand
+                </a>
+
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

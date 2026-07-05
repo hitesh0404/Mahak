@@ -5,7 +5,64 @@ Products
 {% endblock %}
 
 {% block content %}
-    <a href="/"><h1 >Mahak Cart Page</h1></a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
+    {% if cart_items  %}
+        {% for item in cart_items %}
+            <div class="col-md-12 mb-12">
+
+                <div class="card h-100">
+
+                    <img src="{{ item.product.image.url }}"
+                    height="100px"
+                        class="card-img-top"
+                        alt="{{ item.product.name }}">
+
+                    <div class="card-body">
+
+                        <h5>{{ item.product.name }}</h5>
+
+                        <p>₹{{ item.product.price }}</p>
+
+                        <p>Qty :
+                        <a href="{% url 'increase_quantity' item.product.slug %}"
+                        class="btn btn-primary"> 
+                            +
+                        </a>
+                        <strong> {{ item.quantity }}</strong>
+                        <a href="{% url 'decrease_quantity' item.product.slug %}"
+                        class="btn btn-primary"> 
+
+                            -
+                        </a>
+                        </p>
+                        <a href="{% url 'product_detail' item.product.slug %}"
+                        class="btn btn-primary"> 
+
+                            View Product
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        {% endfor %}
+        <div style="float: right;">
+            <a 
+                href="{% url 'place_order' %}" 
+                style="
+                    min-height: 10vh;
+                    min-width: 10vw;  
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: center;" 
+                class="btn btn-success">
+            Proceed
+            </a>
+        </div>
+    {% else %}
+
+        <h1> Your Cart is Empty </h1>
+
+    {% endif %}
 {% endblock %}

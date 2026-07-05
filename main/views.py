@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import logout
 # Create your views here.
 def home(request):
-    return render(request,"index.html")
+    return render(request,"main/index.html")
 
 def about_us(request):
 

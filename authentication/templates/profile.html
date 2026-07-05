@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Profile</h2>
+
+<hr>
+
+<p><strong>Username:</strong> {{ request.user.username }}</p>
+
+<p><strong>Email:</strong> {{ request.user.email }}</p>
+
+<a href="{% url 'update_profile' %}" class="btn btn-primary">
+    Edit Profile
+</a>
+
+<hr>
+
+<h3>Saved Addresses</h3>
+
+<a href="{% url 'add_address' %}" class="btn btn-success">
+    Add Address
+</a>
+
+<br><br>
+
+{% for address in addresses %}
+
+<div class="card p-3 mb-3">
+
+    <h5>{{ address.full_name }}</h5>
+
+    <p>{{ address.address_line_one }}</p>
+
+    <p>{{ address.address_line_two }}</p>
+
+    <p>{{ address.city }}, {{ address.state }}</p>
+
+    <p>{{ address.pincode }}</p>
+
+    <a href="{% url 'delete_address' address.id %}"
+       class="btn btn-danger btn-sm">
+        Delete
+    </a>
+
+</div>
+
+{% empty %}
+
+<p>No address added.</p>
+
+{% endfor %}
+
+{% endblock %}
